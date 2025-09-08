@@ -14,13 +14,25 @@ const questions = [
   }
 ];
 
-// Save elements after DOM loads
+// Save progress to localStorage
+function saveProgress(idx) {
+  localStorage.setItem('quiz-index', idx);
+}
+
+// Load progress from localStorage
+function loadProgress() {
+  const idx = localStorage.getItem('quiz-index');
+  return idx !== null ? parseInt(idx, 10) : 0;
+}
+
+// Wait for DOM to load
 document.addEventListener('DOMContentLoaded', () => {
   const startBtn = document.getElementById('startQuiz');
   if (startBtn) startBtn.addEventListener('click', showQuizPage);
 
-  // Quiz page generation
+  // Show the quiz page
   function showQuizPage() {
+    // Replace page content with quiz layout
     document.body.innerHTML = `
       <div class="quiz-container">
         <h2 id="quizTitle">Treasure Hunt Quiz</h2>
@@ -30,19 +42,26 @@ document.addEventListener('DOMContentLoaded', () => {
         <button id="nextBtn">Submit</button>
       </div>
     `;
-    let current = 0;
+
+    // Load saved progress or start at 0
+    let current = loadProgress();
+
     showQuestion(current);
 
     document.getElementById('nextBtn').addEventListener('click', () => {
       const input = document.getElementById('answerInput').value.trim().toLowerCase();
       const correct = questions[current].answer.toLowerCase();
+
       if (input === correct) {
         document.getElementById('feedback').textContent = "";
         current++;
+        saveProgress(current);
+
         if (current < questions.length) {
           showQuestion(current);
           document.getElementById('answerInput').value = "";
         } else {
+          localStorage.removeItem('quiz-index'); // Clear progress on completion
           document.getElementById('questionArea').innerHTML = `<h3>Congratulations! You completed the treasure hunt!</h3>`;
           document.getElementById('answerInput').style.display = "none";
           document.getElementById('nextBtn').style.display = "none";
@@ -53,9 +72,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Display question by index
   function showQuestion(idx) {
     document.getElementById('questionArea').innerHTML = `<p>${questions[idx].question}</p>`;
     document.getElementById('feedback').textContent = "";
     document.getElementById('answerInput').focus();
+    saveProgress(idx); // Save progress on question change
   }
 });
