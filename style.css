@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Share+Tech+Mono&display=swap');
+
+body.welcome-bg {
+  background: linear-gradient(115deg, #171b2a 60%, #1be3bc 100%);
+  min-height: 100vh;
+  margin: 0;
+}
+
+.welcome-container, .quiz-container {
+  background: rgba(22, 27, 44, 0.95);
+  border-radius: 18px;
+  box-shadow: 0 0 21px 8px #1be3bc70, 0 0 2px 1px #00fff1ba;
+  padding: 44px 60px;
+  max-width: 520px;
+  margin: 50px auto;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.welcome-container::after, .quiz-container::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: repeating-linear-gradient(135deg, transparent, transparent 38px, #00fff122 39px, transparent 42px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.welcome-container h1, .quiz-container h2 {
+  font-family: 'Orbitron', 'Share Tech Mono', monospace;
+  color: #1be3bc;
+  font-size: 2.7em;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px #00fff1, 0 0 30px #1be3bc70;
+  margin-bottom: 20px;
+}
+
+.welcome-container .tagline {
+  color: #e6e9ed;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.17em;
+  margin-bottom: 38px;
+  text-shadow: 0 0 8px #00fff1a1;
+}
+
+button#startQuiz, button#nextBtn {
+  font-family: 'Orbitron', 'Share Tech Mono', monospace;
+  background: linear-gradient(90deg, #1be3bc 0%, #00fff1 100%);
+  color: #23273a;
+  box-shadow: 0 0 10px #00fff1, 0 0 8px #1be3bc77;
+  padding: 14px 38px;
+  font-size: 1.18em;
+  border-radius: 10px;
+  border: 2px solid #00fff1;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin-top: 22px;
+  transition: background 0.24s, color 0.24s, box-shadow 0.24s;
+}
+
+button#startQuiz:hover, button#nextBtn:hover {
+  background: #23273a;
+  color: #1be3bc;
+  box-shadow: 0 0 22px #00fff1, 0 0 10px #1be3bc77;
+}
+
+.quiz-container h2 {
+  margin-bottom: 14px;
+}
+
+.quiz-container p {
+  color: #e6e9ed;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.2em;
+  margin-bottom: 17px;
+}
+
+input[type="text"] {
+  padding: 13px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.13em;
+  border-radius: 7px;
+  border: 2px solid #00fff1;
+  width: 78%;
+  background: #23273a;
+  color: #1be3bc;
+  box-shadow: 0 0 10px #1be3bc55;
+  margin-bottom: 15px;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus {
+  border-color: #00fecc;
+  box-shadow: 0 0 24px #00fff1c0;
+}
+
+.feedback {
+  color: #ff4365;
+  font-family: 'Orbitron', 'Share Tech Mono', monospace;
+  font-size: 1.16em;
+  font-weight: bold;
+  min-height: 2em;
+  text-shadow: 0 0 8px #ff398148;
+}
+
+.quiz-container h3 {
+  color: #1be3bc;
+  font-family: 'Orbitron', 'Share Tech Mono', monospace;
+  margin-top: 35px;
+  font-size: 1.7em;
+  text-shadow: 0 0 18px #00fff1, 0 0 30px #1be3bc70;
+}
+
+/* Animated glowing border for extra techno effect */
+@keyframes neonGlow {
+  0%,100% {box-shadow: 0 0 6px #00fff1;}
+  50% {box-shadow: 0 0 24px #1be3bc, 0 0 16px #00fff1;}
+}
+.welcome-container, .quiz-container {
+  animation: neonGlow 2.6s linear infinite;
+}
