@@ -1,125 +1,140 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
 
-body.welcome-bg {
-  background: linear-gradient(115deg, #171b2a 60%, #1be3bc 100%);
+:root {
+  --primary-bg: #11141a;
+  --card-bg: #181c22;
+  --accent: #4dd0e1;
+  --button-bg: #23273a;
+  --button-hover: #4dd0e1;
+  --button-text: #f0f2f5;
+  --text-main: #f0f2f5;
+  --text-muted: #b0b4be;
+  --input-bg: #20232a;
+  --input-border: #363943;
+  --input-focus: #4dd0e1;
+  --win-color: #39e2a0;
+  --error-color: #fb6060;
+}
+
+body {
+  background: var(--primary-bg);
+  color: var(--text-main);
   min-height: 100vh;
+  font-family: 'Montserrat', Arial, sans-serif;
   margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .welcome-container, .quiz-container {
-  background: rgba(22, 27, 44, 0.95);
+  background: var(--card-bg);
   border-radius: 18px;
-  box-shadow: 0 0 21px 8px #1be3bc70, 0 0 2px 1px #00fff1ba;
-  padding: 44px 60px;
-  max-width: 520px;
-  margin: 50px auto;
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-}
-
-.welcome-container::after, .quiz-container::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: repeating-linear-gradient(135deg, transparent, transparent 38px, #00fff122 39px, transparent 42px);
-  z-index: 0;
-  pointer-events: none;
+  box-shadow: 0 4px 32px 0 #07080c60;
+  padding: 45px 32px 32px 32px;
+  max-width: 400px;
+  width: 96vw;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .welcome-container h1, .quiz-container h2 {
-  font-family: 'Orbitron', 'Share Tech Mono', monospace;
-  color: #1be3bc;
-  font-size: 2.7em;
-  letter-spacing: 2px;
-  text-shadow: 0 0 10px #00fff1, 0 0 30px #1be3bc70;
-  margin-bottom: 20px;
+  font-size: 2.1em;
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -1.5px;
+  text-align: center;
 }
 
 .welcome-container .tagline {
-  color: #e6e9ed;
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 1.17em;
-  margin-bottom: 38px;
-  text-shadow: 0 0 8px #00fff1a1;
+  color: var(--text-muted);
+  font-size: 1.18em;
+  margin-bottom: 42px;
+  text-align: center;
 }
 
 button#startQuiz, button#nextBtn {
-  font-family: 'Orbitron', 'Share Tech Mono', monospace;
-  background: linear-gradient(90deg, #1be3bc 0%, #00fff1 100%);
-  color: #23273a;
-  box-shadow: 0 0 10px #00fff1, 0 0 8px #1be3bc77;
-  padding: 14px 38px;
-  font-size: 1.18em;
-  border-radius: 10px;
-  border: 2px solid #00fff1;
-  font-weight: bold;
+  width: 94%;
+  margin: 14px auto 0 auto;
+  background: var(--button-bg);
+  color: var(--button-text);
+  border-radius: 6px;
+  border: 1.5px solid var(--input-border);
+  font-weight: 600;
+  font-size: 1.09em;
+  padding: 13px 0;
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
   cursor: pointer;
-  text-transform: uppercase;
-  margin-top: 22px;
-  transition: background 0.24s, color 0.24s, box-shadow 0.24s;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 12px #24262e70;
 }
-
-button#startQuiz:hover, button#nextBtn:hover {
-  background: #23273a;
-  color: #1be3bc;
-  box-shadow: 0 0 22px #00fff1, 0 0 10px #1be3bc77;
+button#startQuiz:hover, button#nextBtn:hover,
+button#startQuiz:focus, button#nextBtn:focus {
+  background: var(--button-hover);
+  color: #161a21;
+  border-color: var(--button-hover);
+  outline: none;
 }
 
 .quiz-container h2 {
-  margin-bottom: 14px;
+  margin-bottom: 9px;
 }
 
 .quiz-container p {
-  color: #e6e9ed;
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 1.2em;
-  margin-bottom: 17px;
-}
-
-input[type="text"] {
-  padding: 13px;
-  font-family: 'Share Tech Mono', monospace;
+  color: var(--text-main);
   font-size: 1.13em;
-  border-radius: 7px;
-  border: 2px solid #00fff1;
-  width: 78%;
-  background: #23273a;
-  color: #1be3bc;
-  box-shadow: 0 0 10px #1be3bc55;
-  margin-bottom: 15px;
-  outline: none;
-  transition: border 0.2s, box-shadow 0.3s;
+  letter-spacing: .1px;
+  margin-bottom: 18px;
+  text-align: center;
 }
-
+input[type="text"] {
+  background: var(--input-bg);
+  color: var(--text-main);
+  border: 1.5px solid var(--input-border);
+  border-radius: 5px;
+  font-size: 1.1em;
+  padding: 12px 18px;
+  outline: none;
+  margin-bottom: 18px;
+  width: 92%;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
 input[type="text"]:focus {
-  border-color: #00fecc;
-  box-shadow: 0 0 24px #00fff1c0;
+  border-color: var(--input-focus);
+  box-shadow: 0 0 0 2px #4dd0e150;
 }
 
 .feedback {
-  color: #ff4365;
-  font-family: 'Orbitron', 'Share Tech Mono', monospace;
-  font-size: 1.16em;
-  font-weight: bold;
+  color: var(--error-color);
+  font-weight: 800;
+  font-size: 1.04em;
   min-height: 2em;
-  text-shadow: 0 0 8px #ff398148;
+  margin-bottom: 4px;
+  margin-top: 5px;
+  text-align: center;
+  letter-spacing: 0.3px;
 }
 
 .quiz-container h3 {
-  color: #1be3bc;
-  font-family: 'Orbitron', 'Share Tech Mono', monospace;
-  margin-top: 35px;
-  font-size: 1.7em;
-  text-shadow: 0 0 18px #00fff1, 0 0 30px #1be3bc70;
+  color: var(--win-color);
+  margin-top: 36px;
+  font-size: 1.41em;
+  text-align: center;
+  letter-spacing: 1px;
 }
 
-/* Animated glowing border for extra techno effect */
-@keyframes neonGlow {
-  0%,100% {box-shadow: 0 0 6px #00fff1;}
-  50% {box-shadow: 0 0 24px #1be3bc, 0 0 16px #00fff1;}
+@media (max-width: 480px) {
+  .welcome-container, .quiz-container {
+    padding: 23px 5vw 22px 5vw;
+    max-width: 98vw;
+  }
+  body {
+    align-items: flex-start;
+  }
 }
-.welcome-container, .quiz-container {
-  animation: neonGlow 2.6s linear infinite;
-}
+
+::-webkit-scrollbar { display: none; }
